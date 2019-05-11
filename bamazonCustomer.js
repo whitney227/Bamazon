@@ -20,4 +20,13 @@ var connection = mysql.createConnection({
 connection.connect(function(err){
   if (err) throw (err);
   console.log("connection successful");
-})
+
+  //create a table that will display all the items for sale
+  //run table in the terminal
+  connection.query("SELECT * FROM bamazon_db.products", function (err, res){
+    if (err) {throw err};
+    console.table(res)
+  //close connection
+  connection.end();
+  });
+});
